@@ -7,7 +7,7 @@ class SongsInitial extends FavsSongsState {}
 class LoadingSongs extends FavsSongsState {}
 
 class LoadedSongs extends FavsSongsState {
-  final List<Map<String,String>> songs;
+  final List<dynamic> songs;
 
   LoadedSongs({required this.songs});
   List<Object> get props => [songs];
