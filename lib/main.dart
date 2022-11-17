@@ -6,14 +6,19 @@ import 'package:p1_mob_dev/home/song_screen.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:p1_mob_dev/home/bloc_homepage/homepage_bloc.dart';
 import 'package:p1_mob_dev/home/bloc_songs/songs_bloc.dart';
-// import 'package:p1_mob_dev/home/bloc_songscreen/';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp(),
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp( MyApp(),
   );
+
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+  );
+
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
