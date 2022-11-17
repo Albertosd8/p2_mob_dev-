@@ -14,9 +14,6 @@ class SongScreen extends StatefulWidget {
 }
 
 class _SongScreenState extends State<SongScreen> {
-  // String title_album = "Feel something";
-  // String title_song = "Infinity";
-  // String title_song_date = "2017-06-23";
   // @override
   // void initState(){
   //   super.initState();
