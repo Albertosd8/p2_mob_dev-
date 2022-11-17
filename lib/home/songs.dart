@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-
 import 'bloc_songs/songs_bloc.dart';
-
 class Songs extends StatefulWidget {
   Songs({Key? key}) : super(key: key);
 
@@ -16,26 +14,41 @@ class _SongsState extends State<Songs> {
     return Scaffold(
       appBar: AppBar(
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: 
-                    ListView.separated(
-                      itemCount: FavsSongsBloc.songs_list.length,
-                      separatorBuilder: (BuildContext context, int index){
-                        return Spacer();},
-                      itemBuilder: (BuildContext context, int index){
-                        return CustomSongCardsLists(
-                          image: FavsSongsBloc.songs_list[index]['image']!, 
-                          song_name:  FavsSongsBloc.songs_list[index]['song_name']!, 
-                          author:  FavsSongsBloc.songs_list[index]['author']!);
-                      },
-                    )
-                
-              
-          ),
-        ],
-      )
+      body: BlocConsumer<FavsSongsBloc, FavsSongsState>(
+        listener: (context, state) {
+          //TODO
+        },
+        builder: (context, state) {
+          if(state is LoadingSongs){
+            return Center(child:Text("Loading..."));
+          }
+          else if(state is LoadedSongs){
+            Column(
+            children: [
+              Expanded(
+                child: 
+                  ListView.separated(
+                    itemCount: state.songs.length,
+                    separatorBuilder: (BuildContext context, int index){
+                      return Spacer();},
+                    itemBuilder: (BuildContext context, int index){
+                      return CustomSongCardsLists(
+                        image: state.songs[index]['image']!, 
+                        song_name:  state.songs[index]['song_name']!, 
+                        author:  state.songs[index]['author']!);
+                    },
+                  )
+              ),
+            ],
+          );
+          } else if (state is NoSongs){
+            return Center(child: Text("No favorite songs"),);
+          } return Container();
+        },
+      ),
+      
+      
+      
     );
   }
 }
