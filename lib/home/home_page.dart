@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _animate = false;
-  String message_toque = "Toque para escuchar";
 
   // @override
   // void initState(){
@@ -85,6 +84,7 @@ class _HomePageState extends State<HomePage> {
                       shape: CircleBorder(),
                     ),
                     onPressed: (){
+                      BlocProvider.of<FavsSongsBloc>(context).add(LoadSongsFavs());
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Songs(),));
                     }, 
                   ),
