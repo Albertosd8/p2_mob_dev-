@@ -44,6 +44,10 @@ dependencies:
   record: ^3.0.4
   path_provider: ^2.0.9
   http: ^0.13.4
+  firebase_core: ^2.2.0
+  firebase_auth: ^4.1.2
+  cloud_firestore: ^4.0.5
+  shimmer: ^2.0.0
 
 flutter_icons:
   android: true
@@ -106,3 +110,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
