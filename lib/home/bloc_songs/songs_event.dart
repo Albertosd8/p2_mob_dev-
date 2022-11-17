@@ -13,3 +13,5 @@ class RemoveFromSongsFavs extends SongsEvent {
 
   RemoveFromSongsFavs({required this.songToRemove});
 }
+
+class LoadSongsFavs extends SongsEvent {}
