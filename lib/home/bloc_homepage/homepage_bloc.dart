@@ -21,13 +21,13 @@ class HomePageBloc
   }
   FutureOr<void> _recodSong(event, emit) async {
     // print("hey");
-    emit(HomePageRecording());
+    // emit(HomePageRecording());
     final record = Record();
     bool canRecord = await record.hasPermission();
     if (canRecord) {
       Directory tempDir = await getTemporaryDirectory();
       await record.start(path: tempDir.path + "/temp_audio.m4a"); 
-      // emit(HomePageRecording());
+      emit(HomePageRecording());
       await Future.delayed(
         const Duration(seconds: 10),
         () async {
