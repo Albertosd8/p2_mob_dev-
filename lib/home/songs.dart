@@ -23,27 +23,23 @@ class _SongsState extends State<Songs> {
             return Center(child:Text("Loading..."));
           }
           else if(state is LoadedSongs){
-            Column(
-            children: [
-              Expanded(
-                child: 
-                  ListView.separated(
-                    itemCount: state.songs.length,
-                    separatorBuilder: (BuildContext context, int index){
-                      return Spacer();},
-                    itemBuilder: (BuildContext context, int index){
-                      return CustomSongCardsLists(
-                        image: state.songs[index]['image']!, 
-                        song_name:  state.songs[index]['song_name']!, 
-                        author:  state.songs[index]['author']!);
-                    },
-                  )
-              ),
-            ],
-          );
+            return ListView.separated(
+              itemCount: state.songs.length,
+              separatorBuilder: (BuildContext context, int index){
+                return Spacer();},
+              itemBuilder: (BuildContext context, int index){
+                return CustomSongCardsLists(
+                  image: state.songs[index]['image']!, 
+                  song_name:  state.songs[index]['song_name']!, 
+                  author:  state.songs[index]['author']!);
+              },
+            );
           } else if (state is NoSongs){
-            return Center(child: Text("No favorite songs"),);
-          } return Container();
+            return Center(
+              child: Text("No favorite songs"),
+            );
+          } 
+          return Container();
         },
       ),
       
@@ -127,4 +123,5 @@ class CustomSongCardsLists extends StatelessWidget{
   }
 
 }
+
 
